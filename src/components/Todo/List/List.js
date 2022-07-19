@@ -27,9 +27,7 @@ function List({ doList, addNew, status, setStatus }) {
                 type="checkbox"
                 onClick={() => completedToDo(i)}
               />
-              <label>
-                {i} - {list.item} - {list.isActive}
-              </label>
+              <label>{list.item}</label>
               <button
                 className="destroy"
                 onClick={() => removeToDo(i)}
