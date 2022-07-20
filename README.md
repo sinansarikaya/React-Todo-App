@@ -1,6 +1,6 @@
 # Demo
 
-<a href="https://react-todo-c69d1c.netlify.app/">Click here for demo</a>
+## <a href="https://react-todo-c69d1c.netlify.app/">Click here for demo</a>
 
 # Getting Started with Create React App
 
