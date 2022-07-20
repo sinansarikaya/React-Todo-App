@@ -1,4 +1,4 @@
-function Footer({ doList, status, setStatus }) {
+function Footer({ doList, addNew, status, setStatus, btn, setBtn }) {
   const all = () => {
     console.log("all");
     setStatus(doList);
@@ -13,6 +13,16 @@ function Footer({ doList, status, setStatus }) {
     const filtered = doList.filter(({ isActive }) => isActive === true);
     setStatus(filtered);
   };
+
+  const clearCompleted = () => {
+    const clearTodos = doList.filter(({ isActive }) => isActive === false);
+    addNew(clearTodos);
+    setStatus(clearTodos);
+  };
+
+  const handleClick = (event) => {
+    setBtn(event.target.id);
+  };
   return (
     <footer className="footer">
       <span className="todo-count">
@@ -22,23 +32,49 @@ function Footer({ doList, status, setStatus }) {
 
       <ul className="filters">
         <li>
-          <a href="#/" className="selected" onClick={all}>
+          <a
+            href="#/"
+            className={btn === "all" ? "selected" : undefined}
+            id={"all"}
+            onClick={(event) => {
+              all();
+              handleClick(event);
+            }}
+          >
             All
           </a>
         </li>
         <li>
-          <a href="#/" onClick={active}>
+          <a
+            href="#/"
+            className={btn === "active" ? "selected" : undefined}
+            id={"active"}
+            onClick={(event) => {
+              active();
+              handleClick(event);
+            }}
+          >
             Active
           </a>
         </li>
         <li>
-          <a href="#/" onClick={passive}>
+          <a
+            href="#/"
+            className={btn === "passive" ? "selected" : undefined}
+            id={"passive"}
+            onClick={(event) => {
+              passive();
+              handleClick(event);
+            }}
+          >
             Completed
           </a>
         </li>
       </ul>
 
-      <button className="clear-completed">Clear completed</button>
+      <button className="clear-completed" onClick={clearCompleted}>
+        Clear completed
+      </button>
     </footer>
   );
 }

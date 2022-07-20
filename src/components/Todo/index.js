@@ -6,10 +6,12 @@ import List from "./List/List";
 function Todo() {
   const [todo, setTodo] = useState([]);
   const [status, setStatus] = useState([]);
+  const [btn, setBtn] = useState("");
 
   useEffect(() => {
     //console.log(status);
   }, [todo]);
+
   return (
     <section className="todoapp">
       <Header
@@ -29,6 +31,8 @@ function Todo() {
         addNew={setTodo}
         status={status}
         setStatus={setStatus}
+        btn={btn}
+        setBtn={setBtn}
       />
     </section>
   );
